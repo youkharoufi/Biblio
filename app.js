@@ -15,7 +15,7 @@ const dotenv=require('dotenv').config;
 var app = express();
 
 app.use(session({
-  secret:process.env.SECRET,
+  secret:"keyboard cat",
   resave:false,
   saveUninitialized:false,
   cookie:{secure:true}
@@ -38,7 +38,7 @@ app.set('view engine', 'twig');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser("secret"));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('body-parser').urlencoded({ extended: true }));
