@@ -15,7 +15,7 @@ const dotenv=require('dotenv').config;
 var app = express();
 
 app.use(session({
-  secret:process.env.SERCRET,
+  secret:process.env.SECRET,
   resave:false,
   saveUninitialized:false,
   cookie:{secure:true}
