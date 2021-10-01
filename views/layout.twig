@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BCDi</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/livres/icon.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin='anonymous'>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">IFQatar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        {% if user %}
+        <li class="nav-item">
+          <a class="nav-link" href="/add-book">Ajouter un livre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/books/">Vos livres</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/donnees-emprunts">Les emprunts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ajouter-categorie">Ajout de categories</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% if user %}
+    <a href="/users/logout" class="btn btn-success m-1"> Logout </a>
+    {% else %}
+    <a href="/users/login" class="btn btn-success m-1"> Login </a>
+    <a href="/users/signup" class="btn btn-success m-1"> Signup </a>
+    {% endif %}
+  </div>
+  </nav>
+
+<div class="container mt-3">
+{% if warning %}
+<div class="alert alert-warning" id="alert-warning">{{warning}}</div>
+{% endif %}
+{% if success %}
+<div class="alert alert-success" id="alert-success">{{success}}</div>
+{% endif %}
+{% if error %}
+  <div class="alert alert-danger" id="alert-danger">{{error}}</div>
+{% endif %}
+    {% block body %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+<script>
+window.addEventListener("load",(event)=>{
+  setTimeout(()=>{
+    if(document.getElementById("alert-success")){
+      document.getElementById('alert-success').style.display="none";
+    }
+    else if(document.getElementById("alert-warning")){
+      document.getElementById('alert-warning').style.display="none";
+    }
+    else if(document.getElementById("alert-danger")){
+      document.getElementById('alert-danger').style.display="none";
+    }
+  },10000)
+})
+</script>
+
+
+
+  </body>
+</html>

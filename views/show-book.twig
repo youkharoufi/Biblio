@@ -1,0 +1,42 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+
+
+<div class="card mb-3">
+  <img src="{{book.image}}" class="card-img-top" alt="{{article.title}}">
+  <div class="card-body">
+    <h5 class="card-title"> Titre : {{book.titre}}</h5>
+    <p class="card-text"> Auteur : {{book.auteur}}</p>
+    <p class="card-text"><small class="text-muted"> Resume : {{book.resume}}</small></p>
+    <p class="card-text"> Categorie : {{book.categorie}}</p>
+    <p class="card-text"><small class="text-muted"> Nombre d'exemplaires disponibles : {{book.nbExemplaires}}</small></p>
+  </div>
+  
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
+    <a href="/modifier-livre/{{book._id}}" class="btn btn-primary">Modifier les donnees du livre</a>
+    <a href="/emprunter-livre/{{book._id}}" class="btn btn-success">Faire emprunter le livre</a>
+    
+
+
+
+<div class="modal" tabindex="-1" id="exampleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Etes-vous sur de vouloir supprimer cet article ?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>La suppression entrainera la perte de toutes les donnees sur le livre</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <a href="/delete-book/{{book._id}}" class="btn btn-primary">Supprimer</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

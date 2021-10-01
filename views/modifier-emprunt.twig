@@ -1,0 +1,32 @@
+{% extends "layout.twig" %}
+
+
+{% block body %}
+
+<form action="" method='POST'>
+
+
+<div class="form-group">
+<label for="">Nom de l'emprunteur:</label>
+<input type="text" name="nomDeLEmprunteur" value="{{emprunteur.nom}}" class="form-control">
+</div>
+
+<div class="form-group">
+<label for="">Numero de  telephone de l'emprunteur:</label>
+<input type="Number" name="numero" value="{{emprunteur.tel}}" class="form-control">
+</div>
+
+
+<div class="form-group">
+<label for="">Adresse mail de l'emprunteur:</label>
+<input type="email" name="email" value="{{emprunteur.email}}" class="form-control">
+</div>
+
+<div class="form-group">
+<button class='btn btn-success'>Faire emprunter</button>
+</div>
+
+</form>
+
+
+{% endblock %}

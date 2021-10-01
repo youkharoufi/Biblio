@@ -1,0 +1,25 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+
+
+<p>Vos Livres</p>
+
+{% if books %}
+<div class="row">
+{% for book in books %}
+<div class="card col-md-3 m-2" style="width: 18rem;">
+  <img src="{{book.image}}" width="300" height="300" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{book.titre}}</h5>
+    <p class="card-text">{{book.auteur}}</p>
+    <a href="/book-detail/{{book._id}}" class="btn btn-primary">En savoir plus</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+
+{% endif %}
+
+{% endblock %}

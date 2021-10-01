@@ -1,0 +1,94 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+
+    <p class="text-center">Ajouter un Livre !<p>
+   
+    <form action='' method='POST' enctype="multipart/form-data">
+        
+        
+    {% if errorForm %}
+
+    {% for error in errorForm %}
+    <ul>
+    {%if error.title %}
+        <li>{{error.title.message}}</li>
+    {% endif %}
+
+    {% if error.category %}
+        <li>{{error.category.message}}</li>
+    {% endif %}
+
+    {% if error.content %}
+        <li>{{error.content.message}}</li>
+    {% endif %}
+
+    {% if error.image %}
+        <li>{{error.image.message}}</li>
+    {% endif %}
+    </ul>
+        
+    {% endfor %}
+    {% endif %}
+
+            <div class="form-group">
+            <label for="">Titre : </label>
+            <input type="text" name="titre" class="form-control">
+        </div>
+
+        <div class="form-group">
+        <label for="">Auteur : </label>
+            <input type="text" name="auteur" class="form-control">
+        </div>
+    
+    
+        <div class="form-group">
+            <label for="">Categorie : </label>
+            <select name="categorie" id="" class="form-control">
+                <option value="">Choose your category </option>
+            {% if categories %}
+                {% for categorie in categories %}
+                <option value="{{categorie.title}}">{{categorie.title}}</option>
+                {% endfor %}
+            {% endif %}
+            
+            </select>
+        </div>
+        
+    
+        <div class="form-group">
+            <label for="">Resume : </label>
+            <textarea name="resume" id="resume" class="form-control" cols="30" rows="10"></textarea>
+        </div>
+        
+
+    
+        <div class="form-group">
+            <label for="">Image : </label>
+            <input type="file" name="image" class="form-control">
+        </div>
+
+        <div class="form-group">
+        <label for="">Nombre d'exemplaires : </label>
+            <input type="Number" name="nbExemplaires" class="form-control">
+        </div>
+        
+        <div class="form-group">
+        <button class='btn btn-success'>Ajouter Livre</button>
+        </div>
+</form>
+
+
+
+
+{% block javascript %}
+<script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+<script>
+        ClassicEditor
+            .create( document.querySelector( '#resume' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+{% endblock %}
+{% endblock %}

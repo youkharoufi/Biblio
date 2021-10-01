@@ -1,0 +1,46 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+
+{% if emprunteurs %}
+
+{% for emprunteur in emprunteurs %}
+<table class='table table-striped'>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Numero de Telephone</th>
+            <th>Livre emprunte</th>
+            <th>Date d'emprunt</th>
+            <th>Date de retour prevue</th>
+            <th>Nombre d'exemplaires empruntes</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        
+        <tr>
+            <td>{{emprunteur.nom}}</td>
+            <td>{{emprunteur.email}}</td>
+            <td>{{emprunteur.tel}}</td>
+            <td>{{emprunteur.livre}}</td>
+            <td>{{emprunteur.dateEmprunt | date("d-m-Y h:m:s")}}</td>
+            <td>{{emprunteur.dateRetour | date("d-m-Y h:m:s")}}</td>
+            <td>{{emprunteur.nbEmprunts}}</td>
+            <td>
+                <a href="/modifier-emprunteur/{{emprunteur.id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                 <a href="/delete-emprunteur/{{emprunteur.id}}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        
+
+    </tbody>
+
+</table>
+
+
+
+{% endfor %}
+{% endif %}
+{% endblock %}

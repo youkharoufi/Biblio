@@ -1,0 +1,26 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+    <p> Login </p>
+
+
+    <form action="" method="POST">
+        <p class="text-center"> Creez un compte ? <a href="/users/signup">Pour creer un compte clickez ici</a></p>
+        
+        <div class="form-group">
+            <label for="username">username : </label>
+            <input type="text" id="username" name="username" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe : </label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+
+        <p class="text-center">Mot de passe oublie ?<a href="/users/forgot-password">Clickez ici</a></p>
+
+        <div class="form-group">
+        <button type="submit" class="btn btn-success mt-3">login</button>
+        </div>
+
+{% endblock body %}
