@@ -15,7 +15,7 @@ const dotenv=require('dotenv').config;
 var app = express();
 
 app.use(session({
-  secret:"keyboard cat",
+  secret:process.env.SERCRET,
   resave:false,
   saveUninitialized:false,
   cookie:{secure:true}
