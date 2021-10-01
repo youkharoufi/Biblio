@@ -5,7 +5,6 @@ const multerConfig=require('../middlewares/multer');
 const emailService=require('../middlewares/services/email.service');
 const {guard}=require('../middlewares/guard');
 const emailService3=require('../middlewares/services/email3.service');
-const emprunteurValidator=require('../middlewares/validators/emprunteur.validator')
 
 /* GET home page. */
 router.get('/', (req,res)=>{
@@ -24,7 +23,7 @@ router.get('/emprunter-livre/:id',guard,(req,res)=>{
   return res.render('emprunt');
 })
 
-router.post('/emprunter-livre/:id',guard, emprunteurValidator, bookController.emprunter,emailService,bookController.rappel,emailService3);
+router.post('/emprunter-livre/:id',guard, bookController.emprunter,emailService,bookController.rappel,emailService3);
 
 router.get('/donnees-emprunts',guard, bookController.donneesEmprunts);
 

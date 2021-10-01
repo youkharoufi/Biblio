@@ -10,7 +10,8 @@ const passport=require('passport');
 const User=require('./models/user.model');
 const Category=require('./models/categorie.model');
 const Book=require('./models/livre.model');
-const dotenv=require('dotenv').config;
+const dotenv=require('dotenv');
+dotenv.config();
 
 var app = express();
 
@@ -18,7 +19,6 @@ app.use(session({
   secret:process.env.SECRET,
   resave:false,
   saveUninitialized:false,
-  cookie:{secure:true}
 }));
 
 var indexRouter = require('./routes/index');
